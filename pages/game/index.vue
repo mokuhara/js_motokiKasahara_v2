@@ -2,16 +2,17 @@
   <div>
     <div class="container">
       game画面
+      <BetweenGame />
     </div>
   </div>
 </template>
 
 <script>
+import BetweenGame from '@/components/organisms/betweenGame'
+
 export default {
-  methods: {
-    signIn () {
-      this.$store.dispatch('signIn')
-    }
+  components: {
+      BetweenGame
   }
 }
 </script>

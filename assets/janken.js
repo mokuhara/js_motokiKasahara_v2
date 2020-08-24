@@ -1,14 +1,19 @@
 export default class Janken {
 
     constructor(mode) {
+      this.CPIMAGEARR = [
+          '@/assets/img/gu.jpg',
+          '@/assets/img/choki.jpg',
+          '@/assets/img/ps.jpg'
+      ]
+      this.PLAYERIMAGEARR = [
+        '@/assets/img/_gu.jpg',
+        '@/assets/img/_choki.jpg',
+        '@/assets/img/_pa.jpg'
+      ]
       this.mode = mode
-
-      //mode選択
-      const modeId = '#mode'
-    //   this.replaceText(modeId, this.mode)
-
-      this.judgecnt = {
-        'win':0,
+      this.judgeCnt = {
+        'win': 0,
         'lose': 0,
         'drow': 0
       }
@@ -19,41 +24,48 @@ export default class Janken {
     }
     //じゃんけんの結果表示する関数
     result(janken) {
+
       //対戦相手(opponent)の手を取得
-      const opponent = Math.floor(this.createRandomNumber() * 3)
+      const opponent = Math.floor(this._createRandomNumber() * 3)
       //じゃんけんの結果を格納
       const result = (janken - opponent + 3) % 3
 
-      const imgId = '#pc_hands'
-      const judgmentId = '#judgment'
-
-      const element = document.querySelector(imgId)
-
-      //すでにimgがあった場合opoonentImgを削除
-      if(element.hasChildNodes()){
-        this.removeImgTag(imgId)
-      }
-
-      //opoonentImgを表示
-      this.createImgTag(imgId, opponent)
+        // retrunするオブジェクトを初期化
+        let repJankenResult = {
+            jugement: '',
+            judgeCnt: {
+                win: this.judgeCnt.win,
+                lose: this.judgeCnt.lose,
+                drow: this.judgeCnt.drow
+            },
+            jankenHand: {
+                playerNum: janken,
+                playerImgURL: this.PLAYERIMAGEARR[janken],
+                cpNum: opponent,
+                cpImgURL: this.CPIMAGEARR[opponent]
+            }
+        }
 
       if(result === 0){
-        this.replaceText(judgmentId, '引き分け')
-        this.judgecnt.drow += 1
-        this.replaceText('#drow', this.judgecnt.drow)
+        this.judgeCnt.drow += 1
+        repJankenResult.jugement = '引き分け'
+        repJankenResult.judgeCnt.drow += 1
+        return repJankenResult
       }else if ( result === 2){
-        this.replaceText(judgmentId, '勝ち')
-        this.judgecnt.win += 1
-        this.replaceText('#win', this.judgecnt.win)
+        this.judgeCnt.win += 1
+        repJankenResult.jugement = '勝ち'
+        repJankenResult.judgeCnt.win += 1
+        return repJankenResult
       } else {
-        this.replaceText(judgmentId, '負け')
-        this.judgecnt.lose += 1
-        this.replaceText('#lose', this.judgecnt.lose)
+        this.judgeCnt.lose += 1
+        repJankenResult.jugement = '負け'
+        repJankenResult.judgeCnt.lose += 1
+        return repJankenResult
       }
     }
 
     //modeから乱数生成選択
-    createRandomNumber() {
+    _createRandomNumber() {
       //難易度の設定
       const easy = () => Math.random()**2
       const normal = () => (Math.random() + Math.random()) / 2
@@ -65,28 +77,5 @@ export default class Janken {
         "hard": hard()
       }
       return modeObj[this.mode]
-    }
-
-    //imgTagを生成する関数
-    createImgTag(selector, num) {
-      console.log(selector, num)
-      const resultImage =  ["./img/gu.jpeg", "./img/choki.jpg","./img/pa.jpeg"]
-      const element = document.querySelector(selector)
-      const imgTag = document.createElement('img')
-      imgTag.classList.add('imgClass');
-      imgTag.src = resultImage[num]
-      element.appendChild(imgTag);
-    }
-
-    //imgTagを除去する関数
-    removeImgTag(selector) {
-      const element = document.querySelector(selector)
-      while (element.firstChild) element.removeChild(element.firstChild);
-    }
-
-    // textの中身を入れ替える関数
-    replaceText(selector, text) {
-      const element = document.querySelector(selector)
-      element.innerText = text
     }
   }

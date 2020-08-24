@@ -11,7 +11,21 @@ const state = () => ({
         noAccount: false,
         isLogin: false
     },
-    janken: {}
+    janken: null,
+    jankenResult: {
+        jugement: '',
+        judgeCnt: {
+            win: 0,
+            lose: 0,
+            drow: 0
+        },
+        jankenHand: {
+            playerNum: null,
+            playerImgURL: null,
+            cpNum: null,
+            cpImgURL: null
+        }
+    }
 })
 
 const getters = {
@@ -23,6 +37,9 @@ const getters = {
     },
     isLogin (state) {
         return state.user.isLogin
+    },
+    jankenResult (state) {
+        return state.jankenResult
     }
 }
 
@@ -43,6 +60,11 @@ const mutations = {
     },
     setJanken (state, janken) {
         state.janken = janken
+    },
+    storeJankenResult (state, hand) {
+        const jankenResult = state.janken.result(hand)
+        if(!jankenResult.jugement) return
+        state.jankenResult = jankenResult
     }
 }
 
@@ -90,6 +112,10 @@ const actions = {
     },
     selectMode ({ commit }, mode) {
         commit('setJanken', new Janken(mode))
+    },
+    clacJankenResult ({ commit, state }, hand) {
+        if(!state.janken.mode) return
+        commit('storeJankenResult', hand)
     }
 }
 
