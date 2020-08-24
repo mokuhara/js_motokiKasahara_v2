@@ -19,10 +19,6 @@ import  { mapGetters } from 'vuex'
 export default {
     computed: {
         ...mapGetters(["jankenResult"]),
-        repCpImageURL(){
-            if(!this.jankenResult.jugement) return require('@/assets/img/danbo.jpg')
-            return this.jankenResult.jankenHand.cpImgURL
-        }
     },
     watch: {
       jankenResult (val, old) {

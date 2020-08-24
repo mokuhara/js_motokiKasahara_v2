@@ -17,6 +17,7 @@ export default class Janken {
         'lose': 0,
         'drow': 0
       }
+      this.point = 0
     }
 
     mode(){
@@ -33,6 +34,7 @@ export default class Janken {
         // retrunするオブジェクトを初期化
         let repJankenResult = {
             jugement: '',
+            point: this.point,
             judgeCnt: {
                 win: this.judgeCnt.win,
                 lose: this.judgeCnt.lose,
@@ -48,16 +50,22 @@ export default class Janken {
 
       if(result === 0){
         this.judgeCnt.drow += 1
+        this._cacPoint()
+        repJankenResult.point = this.point
         repJankenResult.jugement = '引き分け'
         repJankenResult.judgeCnt.drow += 1
         return repJankenResult
       }else if ( result === 2){
         this.judgeCnt.win += 1
+        this._cacPoint()
+        repJankenResult.point = this.point
         repJankenResult.jugement = '勝ち'
         repJankenResult.judgeCnt.win += 1
         return repJankenResult
       } else {
         this.judgeCnt.lose += 1
+        this._cacPoint()
+        repJankenResult.point = this.point
         repJankenResult.jugement = '負け'
         repJankenResult.judgeCnt.lose += 1
         return repJankenResult
@@ -77,5 +85,15 @@ export default class Janken {
         "hard": hard()
       }
       return modeObj[this.mode]
+    }
+
+    _cacPoint() {
+        const modeObj = {
+            "easy": 1,
+            "normal": 3,
+            "hard": 5
+          }
+        const leverage = modeObj[this.mode]
+        this.point = (this.judgeCnt.win - this.judgeCnt.lose) * leverage
     }
   }

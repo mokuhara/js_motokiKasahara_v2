@@ -14,6 +14,7 @@ const state = () => ({
     janken: null,
     jankenResult: {
         jugement: '',
+        point: 0,
         judgeCnt: {
             win: 0,
             lose: 0,
