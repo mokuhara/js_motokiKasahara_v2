@@ -1,6 +1,8 @@
 import firebase from 'firebase'
 import { db } from '~/plugins/firebase.js'
 
+import Janken from '~/assets/janken.js'
+
 const state = () => ({
     user: {
         email: null,
@@ -8,12 +10,16 @@ const state = () => ({
         photoURL: null,
         noAccount: false,
         isLogin: false
-    }
+    },
+    janken: {}
 })
 
 const getters = {
-    user(state){
+    user (state) {
         return state.user
+    },
+    janken (state) {
+        return state.janken
     }
 }
 
@@ -31,6 +37,9 @@ const mutations = {
         state.user.photoURL = null
         state.user.noAccount = true
         state.user.isLogin = false
+    },
+    setJanken (state, janken) {
+        state.janken = janken
     }
 }
 
@@ -56,7 +65,7 @@ const actions = {
         })
     },
 
-    async checkUser ({ dispatch, state }) {
+    checkUser ({ dispatch, state }) {
         db.collection("users").doc(state.user.email).get().then((doc) =>{
             if (doc.exists) {
             } else {
@@ -75,6 +84,9 @@ const actions = {
         }).catch((error) =>{
             console.error("Error writing document: ", error);
         })
+    },
+    selectMode ({ commit }, mode) {
+        commit('setJanken', new Janken(mode))
     }
 }
 

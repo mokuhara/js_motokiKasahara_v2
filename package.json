@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "firebase": "^7.19.0",
+    "node-sass": "^4.14.1",
     "nuxt": "^2.14.0",
+    "sass-loader": "^9.0.3",
     "vuex-persistedstate": "^3.1.0"
   },
   "devDependencies": {}

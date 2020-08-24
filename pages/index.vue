@@ -3,27 +3,10 @@
     <div>
       <Myheader />
       <Logo />
+      <Mode />
       <h1 class="title">
         sample_janken
       </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
       <div>
           <p>fugafuga</p>
           <p>{{ user }}</p>
@@ -34,6 +17,7 @@
 
 <script>
 import Myheader from '@/components/organisms/header'
+import Mode from '@/components/atom/modeSelect'
 
 import { mapGetters } from 'vuex'
 
@@ -53,7 +37,8 @@ export default {
     }
   },
   components: {
-    Myheader
+    Myheader,
+    Mode
   }
 }
 </script>
