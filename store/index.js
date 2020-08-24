@@ -20,6 +20,9 @@ const getters = {
     },
     janken (state) {
         return state.janken
+    },
+    isLogin (state) {
+        return state.user.isLogin
     }
 }
 

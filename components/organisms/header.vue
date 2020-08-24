@@ -1,8 +1,13 @@
 <template>
   <div>
       <div class="container">
-        <div v-if="isLogin">
-            <buttonSignOut />
+        <div class="loginedContainer" v-if="isLogin">
+            <div class="loginedContainer__signOut">
+                <buttonSignOut />
+            </div>
+            <div class="loginedContainer__text">
+                 ログイン中
+            </div>
         </div>
         <div v-else>
             <buttonSignIn />
@@ -29,5 +34,17 @@ export default {
 }
 </script>
 
-<style scopecd>
+<style lang="scss" scopecd>
+.loginedContainer {
+    display:flex;
+    justify-content: flex-end;
+
+    &__signOut {
+        margin: 10px 20px;
+    }
+
+    &__text {
+        margin: 10px 20px;
+    }
+}
 </style>

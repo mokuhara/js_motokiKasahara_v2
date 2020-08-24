@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="container">
-      <button @click="signIn">ログイン</button>
+      game画面
     </div>
   </div>
 </template>

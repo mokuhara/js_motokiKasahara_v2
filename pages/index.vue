@@ -1,15 +1,19 @@
 <template>
-  <div class="container">
-    <div>
-      <Myheader />
-      <Logo />
-      <Mode />
-      <h1 class="title">
-        sample_janken
-      </h1>
+  <div>
+    <div class="container">
+      <header >
+        <Myheader />
+      </header>
+      <main class="main">
+        <div class="startGame">
+            <StartGame />
+        </div>
+        <div class="loginData">
+            <p>ログインデータ</p>
+            <p>{{ user }}</p>
+        </div>
+      </main>
       <div>
-          <p>fugafuga</p>
-          <p>{{ user }}</p>
       </div>
     </div>
   </div>
@@ -17,7 +21,7 @@
 
 <script>
 import Myheader from '@/components/organisms/header'
-import Mode from '@/components/atom/modeSelect'
+import StartGame from '@/components/organisms/startGame'
 
 import { mapGetters } from 'vuex'
 
@@ -28,17 +32,9 @@ export default {
   computed: {
     ...mapGetters(["user"])
   },
-  methods: {
-    signIn () {
-      this.$store.dispatch('signIn')
-    },
-    signOut () {
-      this.$store.dispatch('singOut')
-    }
-  },
   components: {
     Myheader,
-    Mode
+    StartGame
   }
 }
 </script>
@@ -46,40 +42,14 @@ export default {
 <style scoped>
 .container {
   margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+.main {
+  width: 800px;
+}
+
+.loginData {
+  margin: 0 auto;
   text-align: center;
-}
-
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>

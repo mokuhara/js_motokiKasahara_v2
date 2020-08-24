@@ -1,11 +1,10 @@
 <template>
   <div>
       <div class="container">
-        <div class="selectBtn" @click="selectMode($event, 'easy')">easy</div>
+        <div class="selectBtn active" @click="selectMode($event, 'easy')">easy</div>
         <div class="selectBtn" @click="selectMode($event, 'normal')">normal</div>
         <div class="selectBtn" @click="selectMode($event, 'hard')">hard</div>
       </div>
-      {{ janken.mode }}
   </div>
 </template>
 
@@ -32,6 +31,7 @@ export default {
 <style lang="scss" scoped>
 .container {
     display: flex;
+    justify-content: center;
 }
 
 .selectBtn {
