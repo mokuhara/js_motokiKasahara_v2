@@ -2,14 +2,14 @@ export default class Janken {
 
     constructor(mode) {
       this.CPIMAGEARR = [
-          '@/assets/img/gu.jpg',
-          '@/assets/img/choki.jpg',
-          '@/assets/img/ps.jpg'
+          'https://img01.hamazo.tv/usr/kowaseika/d9b0d576.jpg',
+          'https://image.entertainment-topics.jp/article/original/71948.jpg',
+          'https://pimg.togetter.com/small_light(sx=0.0p,sy=3.1p,sw=100.0p,sh=93.3p,dw=1212.0,dh=636.3,cw=1200.0,ch=630.0,p=default,da=l,ds=s)/bf72fa7df42de4efbff9ab766e8cf53bed2e51dd/68747470733a2f2f7062732e7477696d672e636f6d2f6d656469612f455a3572484b4f554d41456f6654692e6a7067'
       ]
       this.PLAYERIMAGEARR = [
-        '@/assets/img/_gu.jpg',
-        '@/assets/img/_choki.jpg',
-        '@/assets/img/_pa.jpg'
+        'https://www.silhouette-illust.com/wp-content/uploads/2016/11/17390-300x300.jpg',
+        'https://www.silhouette-illust.com/wp-content/uploads/2016/11/17430-300x300.jpg',
+        'https://www.silhouette-illust.com/wp-content/uploads/2016/11/17431-300x300.jpg'
       ]
       this.mode = mode
       this.judgeCnt = {
