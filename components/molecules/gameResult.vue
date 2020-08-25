@@ -78,12 +78,16 @@ export default {
         },
         _addScore(){
             const score = {
-                point: this.getJankenResult.point,
-                judgeCnt: {
-                    win: this.getJankenResult.judgeCnt.win,
-                    lose: this.getJankenResult.judgeCnt.lose,
-                    drow: this.getJankenResult.judgeCnt.drow
-                }
+                point: String(this.getJankenResult.point),
+                win: String(this.getJankenResult.judgeCnt.win),
+                lose: String(this.getJankenResult.judgeCnt.lose),
+                drow: String(this.getJankenResult.judgeCnt.drow)
+                // point: this.getJankenResult.point
+                // judgeCnt: {
+                //     win: this.getJankenResult.judgeCnt.win,
+                //     lose: this.getJankenResult.judgeCnt.lose,
+                //     drow: this.getJankenResult.judgeCnt.drow
+                // }
             }
             this.addScore(score)
         }

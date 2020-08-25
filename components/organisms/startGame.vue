@@ -1,6 +1,9 @@
 <template>
   <div>
       <div class="container">
+        <div class="mv">
+            <mainImage />
+        </div>
         <div class="textContent">
             <textContent
                 :title="textProps.title"
@@ -29,7 +32,8 @@
 import Mode from '@/components/atom/modeSelect'
 import MoveBtn from '@/components/atom/buttonMovePage'
 import textContent from '@/components/atom/textContent'
-import Ranking from '@/components/atom/ranking'
+import Ranking from '@/components/molecules/ranking'
+import mainImage from '@/components/atom/mainImage'
 
 export default {
     data(){
@@ -50,12 +54,21 @@ export default {
     Mode,
     MoveBtn,
     textContent,
-    Ranking
+    Ranking,
+    mainImage
   }
 }
 </script>
 
 <style lang="scss" scopecd>
+.container {
+    width: 100%;
+}
+
+.mv {
+    width: 100%;
+}
+
 .textContent {
     margin: 40px auto;
 }
