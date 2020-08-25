@@ -18,10 +18,10 @@ import  { mapGetters } from 'vuex'
 
 export default {
     computed: {
-        ...mapGetters(["jankenResult"]),
+        ...mapGetters(["getJankenResult"])
     },
     watch: {
-      jankenResult (val, old) {
+      getJankenResult (val, old) {
         document.querySelector('.image__player').src = val.jankenHand.playerImgURL
         document.querySelector('.image__cp').src = val.jankenHand.cpImgURL
       }

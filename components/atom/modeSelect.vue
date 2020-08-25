@@ -1,7 +1,7 @@
 <template>
   <div>
       <div class="container">
-        <div class="selectBtn active" @click="selectMode($event, 'easy')">easy</div>
+        <div class="selectBtn" @click="selectMode($event, 'easy')">easy</div>
         <div class="selectBtn" @click="selectMode($event, 'normal')">normal</div>
         <div class="selectBtn" @click="selectMode($event, 'hard')">hard</div>
       </div>

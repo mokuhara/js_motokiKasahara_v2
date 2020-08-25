@@ -2,16 +2,16 @@
   <div>
       <div class="container">
         <div>
-            <span>ポイント： {{ jankenResult.point }}</span>
+            <span>ポイント： {{ getJankenResult.point }}</span>
         </div>
         <div>
-            <span>勝ち： {{ jankenResult.judgeCnt.win }}</span>
+            <span>勝ち： {{ getJankenResult.judgeCnt.win }}</span>
         </div>
         <div>
-            <span>負け： {{ jankenResult.judgeCnt.lose }}</span>
+            <span>負け： {{ getJankenResult.judgeCnt.lose }}</span>
         </div>
         <div>
-            <span>引き分け： {{ jankenResult.judgeCnt.drow }}</span>
+            <span>引き分け： {{ getJankenResult.judgeCnt.drow }}</span>
         </div>
       </div>
   </div>
@@ -22,7 +22,7 @@ import  { mapGetters } from 'vuex'
 
 export default {
     computed: {
-        ...mapGetters(["jankenResult"]),
+        ...mapGetters(["getJankenResult"])
     }
 }
 </script>

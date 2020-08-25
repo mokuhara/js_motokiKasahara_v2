@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import  { mapGetters } from 'vuex'
+import  { mapGetters, mapState } from 'vuex'
 
 export default {
   props: {
@@ -19,22 +19,28 @@ export default {
       btnText: String,
       btnColor: String,
       btnTextColor: String,
+      skipAlert: Boolean,
       callback: Function
   },
   methods: {
     movePage () {
-      if(this.callback) {
-          this.callback()
+      if(!this.janken && !this.skipAlert){
+          alert('難易度を設定してください')
+          return
       }
-      if(!this.isLogin){
+      if(!this.isLogin && !this.skipAlert){
           const result = window.confirm('ログインしていないのでランキングにのりませんがよろしいですか？');
           if(!result) return
+      }
+      if(this.callback) {
+          this.callback()
       }
       this.$router.push(this.pageURL)
     }
   },
   computed: {
-      ...mapGetters(["isLogin"])
+      ...mapGetters(["isLogin"]),
+      ...mapState(["janken"])
   }
 }
 </script>

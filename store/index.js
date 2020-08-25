@@ -42,7 +42,7 @@ const getters = {
     isLogin (state) {
         return state.user.isLogin
     },
-    jankenResult (state) {
+    getJankenResult (state) {
         return state.jankenResult
     }
 }
@@ -65,10 +65,30 @@ const mutations = {
     setJanken (state, janken) {
         state.janken = janken
     },
+    deleteJanken (state) {
+        state.janken = null
+    },
     storeJankenResult (state, hand) {
         const jankenResult = state.janken.result(hand)
         if(!jankenResult.jugement) return
         state.jankenResult = jankenResult
+    },
+    resetJankenResult (state,) {
+        state.jankenResult =  {
+            jugement: '',
+            point: 0,
+            judgeCnt: {
+                win: 0,
+                lose: 0,
+                drow: 0
+            },
+            jankenHand: {
+                playerNum: null,
+                playerImgURL: null,
+                cpNum: null,
+                cpImgURL: null
+            }
+        }
     },
     changeModalStatus(state, boolen){
         state.modal.isOpen = boolen

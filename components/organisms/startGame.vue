@@ -27,13 +27,11 @@ import Mode from '@/components/atom/modeSelect'
 import MoveBtn from '@/components/atom/buttonMovePage'
 import textContent from '@/components/atom/textContent'
 
-import  { mapGetters } from 'vuex'
-
 export default {
     data(){
         return {
             btnProps:{
-                pageURL: '/game',
+                pageURL: '/game/start',
                 btnText: '遊ぶ',
                 btnColor: 'rgba(227,43,43,0.8)',
                 btnTextColor: '#fff',
@@ -42,7 +40,7 @@ export default {
                 title: 'ゲームルール',
                 description: '難易度を選択して「遊ぶをクリック」しよう！ログインするとランキングが表示されるよ！'
             }
-            }
+        }
     },
     components: {
     Mode,

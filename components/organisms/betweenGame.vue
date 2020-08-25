@@ -11,11 +11,13 @@
             <DisplayJankenStatus />
         </div>
         <div>
-            <countDown :callback="openModal"/>
+            <countDown :callback="openModal" :timeLimit="timeLimit"/>
         </div>
     </div>
     <div v-if="modal.isOpen">
-            <Modal />
+            <Modal>
+                <GameResult />
+            </Modal>
     </div>
   </div>
 </template>
@@ -26,19 +28,27 @@ import BattleImage from '@/components/atom/battleImage'
 import DisplayJankenStatus from '@/components/atom/displayJankenStatus'
 import countDown from '@/components/atom/countDown'
 import Modal from '@/components/atom/modal'
+import GameResult from '@/components/molecules/gameResult'
 
 import  { mapGetters, mapState, mapMutations } from 'vuex'
 
 export default {
+    data(){
+        return {
+            timeLimit: 1
+        }
+    },
     components: {
         selectHand,
         BattleImage,
         DisplayJankenStatus,
         countDown,
-        Modal
+        Modal,
+        GameResult
     },
     computed: {
-        ...mapState(["modal"])
+        ...mapState(["modal"]),
+        ...mapGetters(["getJankenResult"])
     },
     methods: {
         ...mapMutations(["changeModalStatus"]),

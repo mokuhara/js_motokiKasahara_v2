@@ -12,12 +12,13 @@
 export default {
   data() {
     return {
-      sec: 1,
+      sec: this.timeLimit,
       timerObj: null,
     }
   },
   props: {
-      callback: Function
+      callback: Function,
+      timeLimit: Number
   },
   methods: {
     count(){
