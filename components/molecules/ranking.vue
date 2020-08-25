@@ -41,7 +41,7 @@ export default {
 }
 
 .title {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
 }

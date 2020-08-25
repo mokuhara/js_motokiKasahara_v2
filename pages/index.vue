@@ -9,7 +9,7 @@
             <StartGame />
         </div>
         <div class="loginData">
-            <p>ログインデータ</p>
+            <p>(参考)ログインデータ</p>
             <p>{{ user }}</p>
         </div>
       </main>
@@ -48,6 +48,11 @@ export default {
 
 .loginData {
   margin: 0 auto;
+  margin-top: 20px;
   text-align: center;
+}
+
+.loginData p{
+  margin: 10px 0;
 }
 </style>

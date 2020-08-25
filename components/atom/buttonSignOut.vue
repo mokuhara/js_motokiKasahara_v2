@@ -1,7 +1,7 @@
 <template>
   <div>
       <div class="container">
-        <button @click="signOut">ログアウト</button>
+        <div class="signOutBtn" @click="signOut">ログアウト</div>
       </div>
   </div>
 </template>
@@ -15,3 +15,15 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.signOutBtn {
+    padding: 20px;
+    background: rgba($color: #757272, $alpha: 0.1);
+}
+
+.signOutBtn:hover {
+    background: rgba($color: #757272, $alpha: 0.2);
+    transition: 0.2s;
+}
+</style>

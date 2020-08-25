@@ -2,15 +2,17 @@
   <div>
       <div class="container">
         <div class="loginedContainer" v-if="isLogin">
-            <div class="loginedContainer__signOut">
-                <buttonSignOut />
-            </div>
             <div class="loginedContainer__text">
                  ログイン中
             </div>
+            <div class="loginedContainer__signOut">
+                <buttonSignOut />
+            </div>
         </div>
-        <div v-else>
-            <buttonSignIn />
+        <div class="loginedContainer" v-else>
+            <div class="loginedContainer__signIn">
+                <buttonSignIn />
+            </div>
         </div>
     </div>
   </div>
@@ -40,11 +42,21 @@ export default {
     justify-content: flex-end;
 
     &__signOut {
-        margin: 10px 20px;
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
     }
 
     &__text {
         margin: 10px 20px;
+        display: flex;
+        align-items: center;
+    }
+
+    &__signIn {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
     }
 }
 </style>
