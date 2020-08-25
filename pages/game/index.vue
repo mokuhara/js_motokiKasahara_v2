@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="container">
-      game画面
-      <BetweenGame />
+        <div class="betweenGame">
+            <BetweenGame />
+        </div>
     </div>
   </div>
 </template>
@@ -16,3 +17,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.betweenGame {
+    width: 800px;
+    margin: 0 auto;
+}
+</style>

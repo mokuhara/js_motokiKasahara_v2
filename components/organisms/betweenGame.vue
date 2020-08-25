@@ -35,7 +35,7 @@ import  { mapGetters, mapState, mapMutations } from 'vuex'
 export default {
     data(){
         return {
-            timeLimit: 1
+            timeLimit: 10
         }
     },
     components: {
