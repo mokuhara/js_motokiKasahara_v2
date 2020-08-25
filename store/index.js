@@ -15,6 +15,7 @@ const state = () => ({
     jankenResult: {
         jugement: '',
         point: 0,
+        scores: [],
         judgeCnt: {
             win: 0,
             lose: 0,
@@ -73,10 +74,11 @@ const mutations = {
         if(!jankenResult.jugement) return
         state.jankenResult = jankenResult
     },
-    resetJankenResult (state,) {
+    resetJankenResult (state, scores) {
         state.jankenResult =  {
             jugement: '',
             point: 0,
+            scores: scores,
             judgeCnt: {
                 win: 0,
                 lose: 0,
@@ -92,6 +94,9 @@ const mutations = {
     },
     changeModalStatus(state, boolen){
         state.modal.isOpen = boolen
+    },
+    addScore( state, score ){
+        state.jankenResult.scores = state.janken.addScores(score)
     }
 }
 

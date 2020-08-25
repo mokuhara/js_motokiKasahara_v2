@@ -18,6 +18,7 @@ export default class Janken {
         'drow': 0
       }
       this.point = 0
+      this.scores = []
     }
 
     mode(){
@@ -35,6 +36,7 @@ export default class Janken {
         let repJankenResult = {
             jugement: '',
             point: this.point,
+            scores: this.scores,
             judgeCnt: {
                 win: this.judgeCnt.win,
                 lose: this.judgeCnt.lose,
@@ -70,6 +72,20 @@ export default class Janken {
         repJankenResult.judgeCnt.lose += 1
         return repJankenResult
       }
+    }
+
+    addScores(score){
+        this.scores = [...this.scores, score]
+        this.scores = this.scores.sort((a,b) => {
+            if(a.point > b.point) return -1;
+            if(a.point < b.point) return 1;
+            return 0;
+        });
+        return this.scores
+    }
+
+    getTopScore() {
+        return this.scores[0]
     }
 
     //modeから乱数生成選択
