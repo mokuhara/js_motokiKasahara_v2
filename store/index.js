@@ -30,7 +30,8 @@ const state = () => ({
     },
     modal: {
         isOpen: false
-    }
+    },
+    allScores: []
 })
 
 const getters = {
@@ -45,6 +46,9 @@ const getters = {
     },
     getJankenResult (state) {
         return state.jankenResult
+    },
+    getAllScores (state) {
+        return state.allScores
     }
 }
 
@@ -75,6 +79,7 @@ const mutations = {
         state.jankenResult = jankenResult
     },
     resetJankenResult (state, scores) {
+        state.janken.resetJankenResult()
         state.jankenResult =  {
             jugement: '',
             point: 0,
@@ -97,6 +102,9 @@ const mutations = {
     },
     addScore( state, score ){
         state.jankenResult.scores = state.janken.addScores(score)
+    },
+    storeAllScore (state, allScores) {
+        state.allScores = allScores
     }
 }
 
@@ -148,6 +156,27 @@ const actions = {
     clacJankenResult ({ commit, state }, hand) {
         if(!state.janken.mode) return
         commit('storeJankenResult', hand)
+    },
+    createScore ({ state }, score) {
+        db.collection("scores").doc().set({
+            name: state.user.name,
+            photoURL: state.user.photoURL,
+            score: score
+        }).then(() =>{
+            console.log("Document successfully written!")
+        }).catch((error) =>{
+            console.error("Error writing document: ", error);
+        })
+    },
+    getAllScores ({ commit }) {
+        console.log('fugafuga')
+        db.collection("scores").get().then((querySnapshot) => {
+            const allScores = []
+            querySnapshot.forEach((doc) => {
+                allScores.push(doc.data())
+            });
+            commit('storeAllScore', allScores)
+        });
     }
 }
 

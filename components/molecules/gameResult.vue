@@ -59,11 +59,24 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(["getJankenResult", "janken"])
+        ...mapGetters(["getJankenResult", "janken", "isLogin"])
     },
     methods: {
         ...mapMutations(["deleteJanken","resetJankenResult", "addScore"]),
         retryGame(){
+            this._addScore()
+            this.resetJankenResult(this.getJankenResult.scores)
+        },
+        exitGame(){
+            this._addScore()
+            const topScore = this.janken.getTopScore()
+            if(this.isLogin){
+                this.$store.dispatch('createScore', topScore)
+            }
+            this.resetJankenResult([])
+            this.deleteJanken()
+        },
+        _addScore(){
             const score = {
                 point: this.getJankenResult.point,
                 judgeCnt: {
@@ -73,12 +86,6 @@ export default {
                 }
             }
             this.addScore(score)
-            this.resetJankenResult(this.getJankenResult.scores)
-        },
-        exitGame(){
-            this.resetJankenResult()
-            this.deleteJanken()
-            //scoresのmaxをfirebaseに保存する関数追加
         }
     },
     components: {

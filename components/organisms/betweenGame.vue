@@ -19,9 +19,6 @@
                 <GameResult />
             </Modal>
     </div>
-    <div>
-        {{ getJankenResult }}
-    </div>
   </div>
 </template>
 

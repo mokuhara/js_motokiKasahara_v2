@@ -18,6 +18,9 @@
                 :btnTextColor="btnProps.btnTextColor"
             />
         </div>
+        <div class="ranking">
+            <Ranking />
+        </div>
     </div>
   </div>
 </template>
@@ -26,6 +29,7 @@
 import Mode from '@/components/atom/modeSelect'
 import MoveBtn from '@/components/atom/buttonMovePage'
 import textContent from '@/components/atom/textContent'
+import Ranking from '@/components/atom/ranking'
 
 export default {
     data(){
@@ -45,7 +49,8 @@ export default {
     components: {
     Mode,
     MoveBtn,
-    textContent
+    textContent,
+    Ranking
   }
 }
 </script>

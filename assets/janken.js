@@ -88,6 +88,15 @@ export default class Janken {
         return this.scores[0]
     }
 
+    resetJankenResult(){
+        this.judgeCnt = {
+            'win': 0,
+            'lose': 0,
+            'drow': 0
+          }
+        this.point = 0
+    }
+
     //modeから乱数生成選択
     _createRandomNumber() {
       //難易度の設定
