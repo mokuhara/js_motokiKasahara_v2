@@ -23,7 +23,7 @@ import { mapGetters } from 'vuex'
 
 export default {
     computed: {
-        ...mapGetters(["getAllScores"]),
+        ...mapGetters(["getAllScores"])
     },
     mounted(){
         this.$store.dispatch("getAllScores")

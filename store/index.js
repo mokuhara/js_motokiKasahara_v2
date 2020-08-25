@@ -104,7 +104,12 @@ const mutations = {
         state.jankenResult.scores = state.janken.addScores(score)
     },
     storeAllScore (state, allScores) {
-        state.allScores = allScores
+        const _allScores = allScores.sort((a,b) => {
+            if(Number(a.score.point) > Number(b.score.point)) return -1
+            if(Number(a.score.point) < Number(b.score.point)) return 1
+            return 0
+        })
+        state.allScores = _allScores
     }
 }
 
