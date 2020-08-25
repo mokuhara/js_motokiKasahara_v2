@@ -13,9 +13,6 @@
             <p>{{ user }}</p>
         </div>
       </main>
-      <div>
-        <BetweenGame />
-      </div>
     </div>
   </div>
 </template>
@@ -23,7 +20,6 @@
 <script>
 import Myheader from '@/components/organisms/header'
 import StartGame from '@/components/organisms/startGame'
-import BetweenGame from '@/components/organisms/betweenGame'
 
 import { mapGetters } from 'vuex'
 
@@ -36,8 +32,7 @@ export default {
   },
   components: {
     Myheader,
-    StartGame,
-    BetweenGame
+    StartGame
   }
 }
 </script>

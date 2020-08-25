@@ -10,6 +10,12 @@
         <div>
             <DisplayJankenStatus />
         </div>
+        <div>
+            <countDown :callback="openModal"/>
+        </div>
+    </div>
+    <div v-if="modal.isOpen">
+            <Modal />
     </div>
   </div>
 </template>
@@ -18,14 +24,30 @@
 import selectHand from '@/components/atom/selectHand'
 import BattleImage from '@/components/atom/battleImage'
 import DisplayJankenStatus from '@/components/atom/displayJankenStatus'
+import countDown from '@/components/atom/countDown'
+import Modal from '@/components/atom/modal'
 
-import  { mapGetters } from 'vuex'
+import  { mapGetters, mapState, mapMutations } from 'vuex'
 
 export default {
     components: {
         selectHand,
         BattleImage,
-        DisplayJankenStatus
+        DisplayJankenStatus,
+        countDown,
+        Modal
+    },
+    computed: {
+        ...mapState(["modal"])
+    },
+    methods: {
+        ...mapMutations(["changeModalStatus"]),
+        openModal(){
+            return this.changeModalStatus(true)
+        }
+    },
+    mounted(){
+        this.changeModalStatus(false)
     }
 }
 </script>

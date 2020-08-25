@@ -26,6 +26,9 @@ const state = () => ({
             cpNum: null,
             cpImgURL: null
         }
+    },
+    modal: {
+        isOpen: false
     }
 })
 
@@ -66,6 +69,9 @@ const mutations = {
         const jankenResult = state.janken.result(hand)
         if(!jankenResult.jugement) return
         state.jankenResult = jankenResult
+    },
+    changeModalStatus(state, boolen){
+        state.modal.isOpen = boolen
     }
 }
 
