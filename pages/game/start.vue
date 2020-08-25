@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="container">
-      <countDown :callback="changePage" :timeLimit="timeLimit"/>
+        <div class="countDown">
+            <countDown :callback="changePage" :timeLimit="timeLimit"/>
+        </div>
     </div>
   </div>
 </template>
@@ -25,3 +27,13 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.countDown {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+
+    min-height: 100vh;
+}
+</style>
