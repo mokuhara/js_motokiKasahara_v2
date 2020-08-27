@@ -2,11 +2,11 @@
   <div>
         <div class="container">
             <div class="title">
-                <h2>ランキング</h2>
+                <h2>top10ランキング</h2>
             </div>
             <div class="ranking">
                 <ul v-for="(score, index) in getAllScores" :key="index">
-                    <li class="ranking__content">
+                    <li class="ranking__content" v-if="index < 10">
                         <RankingContent :score="score" :index="index + 1"/>
                     </li>
                 </ul>

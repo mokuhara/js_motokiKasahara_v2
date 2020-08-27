@@ -2,7 +2,7 @@
   <div>
     <div class="container">
         <div class="countDown">
-            <countDown :callback="changePage" :timeLimit="timeLimit"/>
+            <countDown :callback="changePage" :timeLimit="timeLimit" :soundName="soundName"/>
         </div>
     </div>
   </div>
@@ -17,7 +17,8 @@ export default {
   },
   data(){
       return {
-        timeLimit: 3
+        timeLimit: 3,
+        soundName: 'start'
       }
   },
   methods: {

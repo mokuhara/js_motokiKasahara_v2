@@ -16,6 +16,10 @@
 <script>
 import  { mapGetters } from 'vuex'
 
+import winSound from '~/assets/sound/win.mp3'
+import loseSound from '~/assets/sound/lose.mp3'
+
+
 export default {
     computed: {
         ...mapGetters(["getJankenResult"])
@@ -24,6 +28,13 @@ export default {
       getJankenResult (val, old) {
         document.querySelector('.image__player').src = val.jankenHand.playerImgURL
         document.querySelector('.image__cp').src = val.jankenHand.cpImgURL
+        if(val.jugement==="勝ち"){
+            const audio = new Audio(winSound)
+            audio.play()
+        } else if (val.jugement==="負け"){
+            const audio = new Audio(loseSound)
+            audio.play()
+        }
       }
     }
 }

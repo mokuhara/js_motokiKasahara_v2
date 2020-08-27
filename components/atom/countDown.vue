@@ -9,6 +9,9 @@
 </template>
 
 <script>
+import startSound from '~/assets/sound/start.mp3'
+import finishSound from '~/assets/sound/finish.mp3'
+
 export default {
   data() {
     return {
@@ -18,7 +21,8 @@ export default {
   },
   props: {
       callback: Function,
-      timeLimit: Number
+      timeLimit: Number,
+      soundName: String,
   },
   methods: {
     count(){
@@ -26,8 +30,19 @@ export default {
         this.sec --;
       } else {
           this.complete();
+          if(this.soundName){
+              if(this.soundName === 'start'){
+                  this.playSount(startSound)
+              } else if (this.soundName === 'finish') {
+                  this.playSount(finishSound)
+              }
+          }
           if(this.callback){this.callback()};
       }
+    },
+    playSount(soundName){
+        const audio = new Audio(soundName)
+        audio.play()
     },
 
     start() {

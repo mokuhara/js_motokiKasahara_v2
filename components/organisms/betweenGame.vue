@@ -11,7 +11,7 @@
             <DisplayJankenStatus />
         </div>
         <div>
-            <countDown :callback="openModal" :timeLimit="timeLimit"/>
+            <countDown :callback="openModal" :timeLimit="timeLimit" :soundName="soundName"/>
         </div>
     </div>
     <div v-if="modal.isOpen">
@@ -35,7 +35,8 @@ import  { mapGetters, mapState, mapMutations } from 'vuex'
 export default {
     data(){
         return {
-            timeLimit: 10
+            timeLimit: 10,
+            soundName: 'finish'
         }
     },
     components: {
