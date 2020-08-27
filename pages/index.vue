@@ -61,6 +61,10 @@ export default {
               this.text="だまれ"
           }
       }
+  },
+  beforeDestroy(){
+    this.audio.pause();
+    this.audio.currentTime = 0;
   }
 }
 </script>
